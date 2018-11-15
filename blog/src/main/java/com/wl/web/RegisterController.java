@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Encoder;
 
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -45,13 +46,12 @@ public class RegisterController {
     public String processRegisterInfo(@Valid User user, @RequestPart("headPhoto") MultipartFile headPhoto, Errors errors){
         System.out.println("上传文件大小：" + headPhoto.getSize());
         try {
-//            File file = new File(fileUploadPath);
-//            if (!file.exists()) {
-//                file.mkdirs();
-//            }
-            BASE64Encoder encoder = new BASE64Encoder();
-            user.setHeadPhotoBase64(encoder.encode(headPhoto.getBytes()));
-//            headPhoto.transferTo(new File(file, headPhoto.getOriginalFilename()));
+            File file = new File(fileUploadPath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            user.setHeadPhotoImageName(headPhoto.getOriginalFilename());
+            headPhoto.transferTo(new File(file, headPhoto.getOriginalFilename()));
         } catch (IOException e) {
             e.printStackTrace();
         }

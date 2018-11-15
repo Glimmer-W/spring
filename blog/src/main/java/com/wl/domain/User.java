@@ -19,7 +19,7 @@ public class User {
     @Size(min = 5, max = 30)
     private String password;
 
-    private String headPhotoBase64;
+    private String headPhotoImageName;
 
     public String getName() {
         return name;
@@ -45,12 +45,12 @@ public class User {
         this.password = password;
     }
 
-    public String getHeadPhotoBase64() {
-        return headPhotoBase64;
+    public String getHeadPhotoImageName() {
+        return headPhotoImageName;
     }
 
-    public void setHeadPhotoBase64(String headPhotoBase64) {
-        this.headPhotoBase64 = headPhotoBase64;
+    public void setHeadPhotoImageName(String headPhotoImageName) {
+        this.headPhotoImageName = headPhotoImageName;
     }
 
     @Override

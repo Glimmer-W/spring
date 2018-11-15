@@ -10,6 +10,7 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
@@ -30,6 +31,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         resolver.setExposeContextBeansAsAttributes(true);
         return resolver;
     }
+
 
     /**
      * 配置处理multipart请求数据的解析器(必须配置)

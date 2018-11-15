@@ -9,6 +9,6 @@
     <p>姓名：${user.name}</p>
     <p>用户名：${user.userName}</p>
     <p>密码：${user.password}</p>
-    <p>头像：<img src="data:image/jpeg;base64,${user.headPhotoBase64}"></p>
+    <p>头像：<a href="/file/getFile?fileName=${user.headPhotoImageName}"><img src="/file/getFile?fileName=${user.headPhotoImageName}"></a></p>
 </body>
 </html>
