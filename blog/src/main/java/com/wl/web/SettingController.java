@@ -23,4 +23,10 @@ public class SettingController {
         return "account";
     }
 
+//    @RequestMapping("/account/{userName}")
+//    public void account(@PathVariable String userName, Model model){
+//        model.addAttribute("user", userRepository.getByUserName(userName));
+//        return "account";
+//    }
+
 }

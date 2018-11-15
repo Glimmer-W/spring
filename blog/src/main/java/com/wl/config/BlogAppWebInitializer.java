@@ -1,6 +1,7 @@
 package com.wl.config;
 
 import com.wl.web.filter.MyFilter;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -29,12 +30,19 @@ public class BlogAppWebInitializer extends AbstractAnnotationConfigDispatcherSer
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        // 配置处理multipart请求数据(必须配置)
         registration.setMultipartConfig(new MultipartConfigElement(""));
     }
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new MyFilter()};
+        /**
+         * 使用Filter处理中文乱码
+         */
+        CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+        encodingFilter.setEncoding("UTF-8");
+        encodingFilter.setForceEncoding(true);
+        return new Filter[]{new MyFilter(), encodingFilter};
     }
 
 

@@ -19,6 +19,8 @@ public class User {
     @Size(min = 5, max = 30)
     private String password;
 
+    private String headPhotoBase64;
+
     public String getName() {
         return name;
     }
@@ -41,6 +43,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getHeadPhotoBase64() {
+        return headPhotoBase64;
+    }
+
+    public void setHeadPhotoBase64(String headPhotoBase64) {
+        this.headPhotoBase64 = headPhotoBase64;
     }
 
     @Override

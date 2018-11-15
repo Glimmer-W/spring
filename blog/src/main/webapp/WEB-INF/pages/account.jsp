@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>用户信息</title>
@@ -9,5 +9,6 @@
     <p>姓名：${user.name}</p>
     <p>用户名：${user.userName}</p>
     <p>密码：${user.password}</p>
+    <p>头像：<img src="data:image/jpeg;base64,${user.headPhotoBase64}"></p>
 </body>
 </html>
