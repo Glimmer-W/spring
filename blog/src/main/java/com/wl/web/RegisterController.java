@@ -2,6 +2,7 @@ package com.wl.web;
 
 import com.wl.domain.User;
 import com.wl.service.UserRepository;
+import com.wl.web.util.WebUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-import sun.misc.BASE64Encoder;
 
 import javax.validation.Valid;
 import java.io.File;
@@ -60,6 +60,6 @@ public class RegisterController {
         }
         userRepository.saveUser(user);
         // 重定向到用户详情展示页面
-        return "redirect:/setting/account/" + user.getUserName();
+        return WebUtil.redirect("/setting/account/" + user.getUserName());
     }
 }

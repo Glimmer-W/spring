@@ -19,9 +19,6 @@ public class FileController {
 
     @RequestMapping("/getFile")
     public ModelAndView getFile(String fileName) throws FileNotFoundException {
-        if (1 == 1) {
-            throw new FileNotFoundException("");
-        }
         return new ModelAndView(new ImageView(fileUploadPath, fileName));
     }
 
