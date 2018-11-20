@@ -1,12 +1,12 @@
 package com.wl.config;
 
 import com.wl.web.filter.MyFilter;
+import com.wl.web.listener.MyListener;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.web.util.Log4jConfigListener;
 
-import javax.servlet.Filter;
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletRegistration;
+import javax.servlet.*;
 
 /**
  * Created by wangl on 2018/11/12 11:00
@@ -24,7 +24,7 @@ public class BlogAppWebInitializer extends AbstractAnnotationConfigDispatcherSer
 
     @Override
     protected String[] getServletMappings() {
-        System.err.println("============================被调用了！");
+
         return new String[]{"/"};
     }
 
@@ -34,6 +34,7 @@ public class BlogAppWebInitializer extends AbstractAnnotationConfigDispatcherSer
         registration.setMultipartConfig(new MultipartConfigElement(""));
     }
 
+
     @Override
     protected Filter[] getServletFilters() {
         /**
@@ -42,8 +43,16 @@ public class BlogAppWebInitializer extends AbstractAnnotationConfigDispatcherSer
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
         encodingFilter.setEncoding("UTF-8");
         encodingFilter.setForceEncoding(true);
-        return new Filter[]{new MyFilter(), encodingFilter};
+        return new Filter[]{encodingFilter, new MyFilter()};
     }
 
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.setInitParameter("log4jConfigLocation", "classpath:config/log4j.properties");
+        // 添加监听器
+        servletContext.addListener(MyListener.class);
+        servletContext.addListener(Log4jConfigListener.class);
+    }
 
 }

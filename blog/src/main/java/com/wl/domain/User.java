@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
  * Created by wangl on 2018/11/9 14:05
  */
 public class User {
+    private int id;
     @NotNull
     @Size(min = 1, max = 10)
     private String name;
@@ -51,6 +52,14 @@ public class User {
 
     public void setHeadPhotoImageName(String headPhotoImageName) {
         this.headPhotoImageName = headPhotoImageName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
