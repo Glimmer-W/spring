@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot Contacts</title>
+</head>
+<body>
+<h2>Spring Boot Contacts</h2>
+<!--<form action="" method="post">-->
+    <!---->
+<!--</form>-->
+<ul th:each="contact : ${contacts}">
+    <li>
+        <span th:text="${contact.name}"></span>
+        <span th:text="${contact.phoneNumber}"></span>
+        <span th:text="${contact.emailAddress}"></span>
+    </li>
+
+</ul>
+
+</body>
+</html>
