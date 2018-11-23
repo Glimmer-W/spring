@@ -1,0 +1,2 @@
+INSERT INTO CONTACT(name, phone_number, email_address) VALUES('王亮', '15281058567', '394590459@qq.com');
+INSERT INTO CONTACT(name, phone_number, email_address) VALUES('高杰', '15884527432', '531889579@qq.com');
